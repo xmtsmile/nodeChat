@@ -1,0 +1,44 @@
+body{
+    padding:50px;
+    font-size:14px;
+}
+#content{
+    width:800px;
+    margin:0 auto;
+}
+
+#room{
+    background-color: #ddd;
+    margin-bottom:1rem;
+    height: 20px;
+}
+
+#messages{
+    width:690px;
+    height:300px;
+    overflow: hidden;
+    background-color: #eee;
+    margin-bottom: 1rem;
+    margin-righe:10px;
+}
+#room-list{
+    float:right;
+    width:100px;
+    height:300px;
+    overflow: hidden;
+    background-color: #ddd;
+}
+#room-list div {
+    border-bottom: 1px solid #eee;
+}
+#room-list div:hover{
+    background-color: #ddd;
+}
+#send-message{
+    width:700px;
+    margin-bottom:1rem;
+    margin-right:1rem;
+}
+#help{
+    font-size:10px;
+}

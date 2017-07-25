@@ -1,0 +1,44 @@
+/**
+ * Created by Administrator on 2017/7/20.
+ */
+var Chat = function(socket) {
+    this.socket = socket;
+}
+
+Chat.prototype.sendMessage = function(room, text){
+   var message = {
+       room: room ,
+       text: text
+   }
+   this.socket.emit('message', message);
+}
+
+Chat.prototype.changeRoom = function(room){
+    this.socket.emit('join',{
+        newRoom: room
+    })
+}
+
+Chat.prototype.processCommand = function (command) {
+    var words = command.split(' ');
+    console.log('words---',words)
+    var commands = words[0].substring(1, words[0].length).toLowerCase();
+    console.log('commands---',commands)
+    var message = false;
+    switch(commands) {
+        case 'join':
+            words.shift();
+            var room = words.join(' ');
+            this.changeRoom(room);
+            break;
+        case 'nick':
+            words.shift();
+            var name = words.join(' ');
+            this.socket.emit('nameAttempt', name);
+            break;
+        default:
+            message = 'unrecognized commands';
+            break;
+    }
+    return message;
+}
